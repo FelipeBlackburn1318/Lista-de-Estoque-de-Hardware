@@ -8,22 +8,17 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SQLite;
-
 namespace Lista_de_Estoque_de_Hardware
 {
     public partial class Form1 : Form
     {
         SQLiteConnection conect = new SQLiteConnection(@"data source = C:\hwbd.blkflp");
         SQLiteCommand cmd;
-
         public Form1()
         {
             InitializeComponent();
-            
             selectAllTabela();
-            
         }
-
         public int statusIbm()
         {
             if (chkIBM.Checked)
@@ -31,7 +26,6 @@ namespace Lista_de_Estoque_de_Hardware
             else
                 return 0;
         }
-
         public int statusQbex()
         {
             if (chkQbex.Checked)
@@ -39,7 +33,6 @@ namespace Lista_de_Estoque_de_Hardware
             else
                 return 0;
         }
-
         public int statusDell()
         {
             if (chkDell.Checked)
@@ -47,81 +40,58 @@ namespace Lista_de_Estoque_de_Hardware
             else
                 return 0;
         }
-
         private void btnCadastrar_Click(object sender, EventArgs e)
         {
-
             conect.Open();
-
             try
             {
-                                
-                cmd = new SQLiteCommand("Insert into Hardware values ('"+txtNome.Text+"',"+npdQtd.Value+ ",(SELECT MAX(ID) FROM Hardware)+1 ,'"+statusIbm()+"','"+statusQbex()+"','"+statusDell()+"');",conect);
-
+                cmd = new SQLiteCommand("Insert into Hardware values ('" + txtNome.Text + "'," + npdQtd.Value + ",(SELECT MAX(ID) FROM Hardware)+1 ,'" + statusIbm() + "','" + statusQbex() + "','" + statusDell() + "');", conect);
                 cmd.Prepare();
                 cmd.ExecuteNonQuery();
                 cmd.Dispose();
-                
             }
             catch
             {
-
             }
             conect.Close();
-
             selectAllTabela();
         }
-
         public void selectAllTabela()
         {
             conect.Open();
-
             try
             {
                 cmd = new SQLiteCommand("SELECT ID, peca AS [nome da peça] ,qtdPeca AS [Quantidade de peças], compat_IBM_Lenovo AS [IBM Lenovo], compat_Qbex AS Qbex, compat_Dell AS Dell FROM Hardware", conect);
-
                 SQLiteDataAdapter da = new SQLiteDataAdapter(cmd);
-
                 DataTable pecas = new DataTable();
-
                 da.Fill(pecas);
-
                 dtgTabela.DataSource = pecas;
                 npdQtd.Value = 1;
             }
             catch
             {
-
             }
-
             conect.Close();
         }
-
         private void btnSelectID_Click(object sender, EventArgs e)
         {
             try
             {
                 int compat_IBM, compat_Qbex, compat_Dell, totPecas;
                 cmd = new SQLiteCommand("SELECT ID, peca AS [nome da peça] ,qtdPeca AS [Quantidade de peças], compat_IBM_Lenovo AS [IBM Lenovo], compat_Qbex AS Qbex, compat_Dell AS Dell FROM Hardware WHERE ID = " + npdID.Value + ";", conect);
-
                 SQLiteDataAdapter da = new SQLiteDataAdapter(cmd);
-
                 DataTable pecaEspecifica = new DataTable();
-
                 da.Fill(pecaEspecifica);
-
                 dtgTabela.DataSource = pecaEspecifica;
                 cmd.Dispose();
                 conect.Open();
                 cmd = new SQLiteCommand("SELECT ID, peca, qtdPeca , compat_IBM_Lenovo, compat_Qbex, compat_Dell FROM Hardware WHERE ID = " + npdID.Value, conect);
                 var leitor = cmd.ExecuteReader();
-
                 while (leitor.Read())
                 {
                     totPecas = Convert.ToInt32(leitor["qtdPeca"]);
                     txtNome.Text = leitor["peca"].ToString();
                     npdQtd.Value = totPecas;
-
                     compat_Dell = Convert.ToInt32(leitor["compat_Dell"]);
                     compat_IBM = Convert.ToInt32(leitor["compat_IBM_Lenovo"]);
                     compat_Qbex = Convert.ToInt32(leitor["compat_Qbex"]);
@@ -141,7 +111,6 @@ namespace Lista_de_Estoque_de_Hardware
                     else
                         chkIBM.Checked = false;
                 }
-                
             }
             catch
             {
@@ -152,19 +121,16 @@ namespace Lista_de_Estoque_de_Hardware
                 conect.Close();
             }
         }
-
         private void btnSelectAll_Click(object sender, EventArgs e)
         {
             selectAllTabela();
         }
-
         private void btnUpdate_Click(object sender, EventArgs e)
         {
             conect.Open();
             try
             {
                 cmd = new SQLiteCommand("UPDATE Hardware SET peca = '"+txtNome.Text+"',qtdPeca = "+npdQtd.Value + ",compat_IBM_Lenovo = " + statusIbm()+ ",compat_Qbex = "+statusQbex()+ ",compat_Dell = " + statusDell()+ " WHERE ID = "+npdID.Value, conect);
-
                 cmd.Prepare();
                 cmd.ExecuteNonQuery();
                 cmd.Dispose();
@@ -174,7 +140,6 @@ namespace Lista_de_Estoque_de_Hardware
 
             }
             conect.Close();
-
             selectAllTabela();
         }
     }

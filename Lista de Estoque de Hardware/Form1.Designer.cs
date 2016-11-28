@@ -179,7 +179,7 @@
             this.btnSelectID.Name = "btnSelectID";
             this.btnSelectID.Size = new System.Drawing.Size(116, 30);
             this.btnSelectID.TabIndex = 12;
-            this.btnSelectID.Text = "Visualisar por ID";
+            this.btnSelectID.Text = "Visualizar por ID";
             this.btnSelectID.UseVisualStyleBackColor = true;
             this.btnSelectID.Click += new System.EventHandler(this.btnSelectID_Click);
             // 
@@ -199,7 +199,7 @@
             this.btnSelectAll.Name = "btnSelectAll";
             this.btnSelectAll.Size = new System.Drawing.Size(120, 47);
             this.btnSelectAll.TabIndex = 14;
-            this.btnSelectAll.Text = "Visualisar todos";
+            this.btnSelectAll.Text = "Visualizar todos";
             this.btnSelectAll.UseVisualStyleBackColor = true;
             this.btnSelectAll.Click += new System.EventHandler(this.btnSelectAll_Click);
             // 
