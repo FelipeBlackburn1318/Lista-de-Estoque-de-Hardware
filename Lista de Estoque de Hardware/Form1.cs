@@ -14,10 +14,12 @@ namespace Lista_de_Estoque_de_Hardware
     {
         SQLiteConnection conect = new SQLiteConnection(@"data source = C:\hwbd.blkflp");
         SQLiteCommand cmd;
+        Boolean define = false;
         public Form1()
         {
             InitializeComponent();
             selectAllTabela();
+            MessageBox.Show("Antes de Deletar ou alterar, selecione uma peça por ID");
         }
         public int statusIbm()
         {
@@ -42,10 +44,11 @@ namespace Lista_de_Estoque_de_Hardware
         }
         private void btnCadastrar_Click(object sender, EventArgs e)
         {
+
             conect.Open();
             try
             {
-                cmd = new SQLiteCommand("Insert into Hardware values ('" + txtNome.Text + "'," + npdQtd.Value + ",(SELECT MAX(ID) FROM Hardware)+1 ,'" + statusIbm() + "','" + statusQbex() + "','" + statusDell() + "');", conect);
+                cmd = new SQLiteCommand("Insert into Hardware values ('" + txtNome.Text.ToUpper() + "'," + npdQtd.Value + ",(SELECT MAX(ID) FROM Hardware)+1 ,'" + statusIbm() + "','" + statusQbex() + "','" + statusDell() + "');", conect);
                 cmd.Prepare();
                 cmd.ExecuteNonQuery();
                 cmd.Dispose();
@@ -53,8 +56,10 @@ namespace Lista_de_Estoque_de_Hardware
             catch
             {
             }
+
             conect.Close();
             selectAllTabela();
+
         }
         public void selectAllTabela()
         {
@@ -72,7 +77,8 @@ namespace Lista_de_Estoque_de_Hardware
             {
             }
             conect.Close();
-        }
+            }
+
         private void btnSelectID_Click(object sender, EventArgs e)
         {
             try
@@ -110,6 +116,8 @@ namespace Lista_de_Estoque_de_Hardware
                         chkIBM.Checked = true;
                     else
                         chkIBM.Checked = false;
+
+                    define = true;
                 }
             }
             catch
@@ -121,26 +129,65 @@ namespace Lista_de_Estoque_de_Hardware
                 conect.Close();
             }
         }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            if (define)
+            {
+                conect.Open();
+                try
+                {
+                    if (MessageBox.Show("Realmente deseja excluir a peça " + txtNome.Text.ToUpper() + " ?", "", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    {
+                        cmd = new SQLiteCommand("DELETE FROM Hardware WHERE ID = " + npdID.Value, conect);
+                        cmd.Prepare();
+                        cmd.ExecuteNonQuery();
+                        cmd.Dispose();
+                    }
+                }
+                catch
+                {
+
+                }
+                conect.Close();
+                selectAllTabela();
+
+                txtNome.Clear();
+                chkDell.Checked = false;
+                chkIBM.Checked = false;
+                chkQbex.Checked = false;
+                npdQtd.Value = 0;
+                npdID.Value = 0;
+
+                define = false;
+            }
+        }
+
         private void btnSelectAll_Click(object sender, EventArgs e)
         {
             selectAllTabela();
         }
+
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            conect.Open();
-            try
+            if (define)
             {
-                cmd = new SQLiteCommand("UPDATE Hardware SET peca = '"+txtNome.Text+"',qtdPeca = "+npdQtd.Value + ",compat_IBM_Lenovo = " + statusIbm()+ ",compat_Qbex = "+statusQbex()+ ",compat_Dell = " + statusDell()+ " WHERE ID = "+npdID.Value, conect);
-                cmd.Prepare();
-                cmd.ExecuteNonQuery();
-                cmd.Dispose();
-            }
-            catch
-            {
+                conect.Open();
+                try
+                {
+                    cmd = new SQLiteCommand("UPDATE Hardware SET peca = '" + txtNome.Text.ToUpper() + "',qtdPeca = " + npdQtd.Value + ",compat_IBM_Lenovo = " + statusIbm() + ",compat_Qbex = " + statusQbex() + ",compat_Dell = " + statusDell() + " WHERE ID = " + npdID.Value, conect);
+                    cmd.Prepare();
+                    cmd.ExecuteNonQuery();
+                    cmd.Dispose();
+                }
+                catch
+                {
 
+                }
+                conect.Close();
+                selectAllTabela();
+                define = false;
             }
-            conect.Close();
-            selectAllTabela();
         }
     }
 }

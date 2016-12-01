@@ -5,6 +5,8 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lista de Estoque de Hardware", "Lista de Estoque de Hardware\Lista de Estoque de Hardware.csproj", "{596ABD9D-0A06-4104-896F-B544E8BEEC5B}"
 EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Setup Hardware", "Setup Hardware\Setup Hardware.vdproj", "{36F1F36F-4F11-43CC-B2DF-4D1CEA78F841}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,8 @@ Global
 		{596ABD9D-0A06-4104-896F-B544E8BEEC5B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{596ABD9D-0A06-4104-896F-B544E8BEEC5B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{596ABD9D-0A06-4104-896F-B544E8BEEC5B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{36F1F36F-4F11-43CC-B2DF-4D1CEA78F841}.Debug|Any CPU.ActiveCfg = Debug
+		{36F1F36F-4F11-43CC-B2DF-4D1CEA78F841}.Release|Any CPU.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

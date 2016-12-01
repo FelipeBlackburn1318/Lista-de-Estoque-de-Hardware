@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.txtNome = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -44,6 +45,7 @@
             this.btnSelectID = new System.Windows.Forms.Button();
             this.btnUpdate = new System.Windows.Forms.Button();
             this.btnSelectAll = new System.Windows.Forms.Button();
+            this.btnDelete = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.npdQtd)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.npdID)).BeginInit();
@@ -96,11 +98,12 @@
             // 
             // panel1
             // 
+            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel1.Controls.Add(this.chkQbex);
             this.panel1.Controls.Add(this.chkDell);
             this.panel1.Controls.Add(this.chkIBM);
             this.panel1.Controls.Add(this.label3);
-            this.panel1.Location = new System.Drawing.Point(59, 212);
+            this.panel1.Location = new System.Drawing.Point(59, 204);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(205, 207);
             this.panel1.TabIndex = 6;
@@ -165,43 +168,68 @@
             // 
             // btnCadastrar
             // 
-            this.btnCadastrar.Location = new System.Drawing.Point(103, 425);
+            this.btnCadastrar.BackColor = System.Drawing.Color.Maroon;
+            this.btnCadastrar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnCadastrar.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnCadastrar.Location = new System.Drawing.Point(59, 425);
             this.btnCadastrar.Name = "btnCadastrar";
-            this.btnCadastrar.Size = new System.Drawing.Size(116, 47);
+            this.btnCadastrar.Size = new System.Drawing.Size(205, 47);
             this.btnCadastrar.TabIndex = 11;
             this.btnCadastrar.Text = "Cadastrar";
-            this.btnCadastrar.UseVisualStyleBackColor = true;
+            this.btnCadastrar.UseVisualStyleBackColor = false;
             this.btnCadastrar.Click += new System.EventHandler(this.btnCadastrar_Click);
             // 
             // btnSelectID
             // 
+            this.btnSelectID.BackColor = System.Drawing.Color.Maroon;
+            this.btnSelectID.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnSelectID.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btnSelectID.Location = new System.Drawing.Point(189, 48);
             this.btnSelectID.Name = "btnSelectID";
             this.btnSelectID.Size = new System.Drawing.Size(116, 30);
             this.btnSelectID.TabIndex = 12;
             this.btnSelectID.Text = "Visualizar por ID";
-            this.btnSelectID.UseVisualStyleBackColor = true;
+            this.btnSelectID.UseVisualStyleBackColor = false;
             this.btnSelectID.Click += new System.EventHandler(this.btnSelectID_Click);
             // 
             // btnUpdate
             // 
-            this.btnUpdate.Location = new System.Drawing.Point(103, 503);
+            this.btnUpdate.BackColor = System.Drawing.Color.Maroon;
+            this.btnUpdate.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnUpdate.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnUpdate.Location = new System.Drawing.Point(42, 503);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(116, 47);
             this.btnUpdate.TabIndex = 13;
             this.btnUpdate.Text = "Alterar";
-            this.btnUpdate.UseVisualStyleBackColor = true;
+            this.btnUpdate.UseVisualStyleBackColor = false;
             this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
             // btnSelectAll
             // 
+            this.btnSelectAll.BackColor = System.Drawing.Color.Maroon;
+            this.btnSelectAll.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnSelectAll.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btnSelectAll.Location = new System.Drawing.Point(491, 425);
             this.btnSelectAll.Name = "btnSelectAll";
             this.btnSelectAll.Size = new System.Drawing.Size(120, 47);
             this.btnSelectAll.TabIndex = 14;
             this.btnSelectAll.Text = "Visualizar todos";
-            this.btnSelectAll.UseVisualStyleBackColor = true;
+            this.btnSelectAll.UseVisualStyleBackColor = false;
             this.btnSelectAll.Click += new System.EventHandler(this.btnSelectAll_Click);
+            // 
+            // btnDelete
+            // 
+            this.btnDelete.BackColor = System.Drawing.Color.Maroon;
+            this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnDelete.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnDelete.Location = new System.Drawing.Point(164, 503);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(116, 47);
+            this.btnDelete.TabIndex = 15;
+            this.btnDelete.Text = "Apagar";
+            this.btnDelete.UseVisualStyleBackColor = false;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // Form1
             // 
@@ -209,6 +237,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightSkyBlue;
             this.ClientSize = new System.Drawing.Size(842, 562);
+            this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnSelectAll);
             this.Controls.Add(this.btnUpdate);
             this.Controls.Add(this.btnSelectID);
@@ -221,8 +250,10 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtNome);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Lista de Hardware";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.npdQtd)).EndInit();
@@ -251,6 +282,7 @@
         private System.Windows.Forms.Button btnSelectID;
         private System.Windows.Forms.Button btnUpdate;
         private System.Windows.Forms.Button btnSelectAll;
+        private System.Windows.Forms.Button btnDelete;
     }
 }
 
