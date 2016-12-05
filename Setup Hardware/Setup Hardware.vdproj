@@ -1195,7 +1195,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:Lista de Estoque de Hardware"
         "ProductCode" = "8:{A71617B7-1515-4C71-94DD-B723E23708C1}"
-        "PackageCode" = "8:{40E03A1B-2E3F-4B2E-B3B5-6CF3D36D689F}"
+        "PackageCode" = "8:{767A2E07-5B13-46A3-A2F9-C0F1DCC659C7}"
         "UpgradeCode" = "8:{1DB3E1CF-06B5-47DC-BA29-BD1A6F025D8C}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
@@ -1210,7 +1210,7 @@
         "Subject" = "8:"
         "ARPCONTACT" = "8:Felipe Henrique Astolfi Bazon"
         "Keywords" = "8:"
-        "ARPCOMMENTS" = "8:"
+        "ARPCOMMENTS" = "8:Nothing is true. Everything is permited"
         "ARPURLINFOABOUT" = "8:http://www.augustas.esy.es/"
         "ARPPRODUCTICON" = "8:_FF2B2AC10E6D444782F2E73789145C2E"
         "ARPIconIndex" = "3:0"
@@ -1315,6 +1315,34 @@
         }
         "Shortcut"
         {
+            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_84BFE2939B7D494781C525CE9D2A12D0"
+            {
+            "Name" = "8:Lista de Hardware"
+            "Arguments" = "8:"
+            "Description" = "8:"
+            "ShowCmd" = "3:1"
+            "IconIndex" = "3:0"
+            "Transitive" = "11:FALSE"
+            "Target" = "8:_32559CB3772E437BAD38279245025383"
+            "Folder" = "8:_2350C28AB55344CAA697EEE20844BC39"
+            "WorkingFolder" = "8:_030D58DB2331424992D03D4911C24984"
+            "Icon" = "8:_FF2B2AC10E6D444782F2E73789145C2E"
+            "Feature" = "8:"
+            }
+            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_FAB9642841A84DA3A1CC7545DF23A2C9"
+            {
+            "Name" = "8:Lista de Hardware"
+            "Arguments" = "8:"
+            "Description" = "8:"
+            "ShowCmd" = "3:1"
+            "IconIndex" = "3:0"
+            "Transitive" = "11:FALSE"
+            "Target" = "8:_32559CB3772E437BAD38279245025383"
+            "Folder" = "8:_59D5899B32424CD38C9297F4300F5931"
+            "WorkingFolder" = "8:_030D58DB2331424992D03D4911C24984"
+            "Icon" = "8:_FF2B2AC10E6D444782F2E73789145C2E"
+            "Feature" = "8:"
+            }
         }
         "UserInterface"
         {

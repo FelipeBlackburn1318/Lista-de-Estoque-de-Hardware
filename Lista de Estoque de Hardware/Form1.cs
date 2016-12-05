@@ -19,7 +19,7 @@ namespace Lista_de_Estoque_de_Hardware
         {
             InitializeComponent();
             selectAllTabela();
-            MessageBox.Show("Antes de Deletar ou alterar, selecione uma peça por ID");
+            MessageBox.Show("Antes de Deletar ou alterar, selecione uma peça por ID","Lista de Hardware", MessageBoxButtons.OK ,MessageBoxIcon.Warning);
         }
         public int statusIbm()
         {
